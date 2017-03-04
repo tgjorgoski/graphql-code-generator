@@ -85,7 +85,7 @@
     "handlebars": "^4.0.6",
     "mkdirp": "^0.5.1",
     "pascal-case": "^2.0.0",
-    "request": "^2.79.0"
+    "request": "2.79.0"
   },
   "devDependencies": {
     "conventional-changelog": "^1.1.0",
