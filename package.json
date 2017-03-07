@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tgjorgoski/graphql-codegen.git"
+    "url": "git+https://github.com/tgjorgoski/graphql-code-generator"
   },
   "bin": {
     "gql-gen": "dist/cli/gql-gen.js"
