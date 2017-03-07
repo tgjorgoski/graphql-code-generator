@@ -1,7 +1,7 @@
 {
-  "name": "graphql-code-generator",
+  "name": "gcg-tweaked",
   "version": "0.5.1",
-  "description": "GraphQL types and code generator based on schema",
+  "description": "Graphql-code-generator by Dotan Simha <dotansimha@gmail.com> with some hacks from me to generate specific ts",
   "main": "dist/index.js",
   "scripts": {
     "build-tests": "tsc -p tsconfig.test.json",
@@ -21,34 +21,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dotansimha/graphql-codegen.git"
+    "url": "git+https://github.com/tgjorgoski/graphql-codegen.git"
   },
   "bin": {
     "gql-gen": "dist/cli/gql-gen.js"
   },
   "keywords": [
-    "gql",
-    "generator",
-    "code",
-    "types",
-    "interfaces",
-    "graphql",
-    "codegen",
-    "apollo",
-    "node",
-    "typescript",
-    "ts",
-    "flow",
-    "types",
-    "d.ts",
-    "typings"
   ],
   "author": "Dotan Simha <dotansimha@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dotansimha/graphql-codegen/issues"
-  },
-  "homepage": "https://github.com/dotansimha/graphql-codegen#readme",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

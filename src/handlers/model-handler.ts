@@ -90,20 +90,27 @@ export const handleType = (schema: GraphQLSchema, primitivesMap: any, type: Grap
           const type = getTypeName(primitivesMap, field.type);
           const fieldArguments = field.args || [];
 
+          let argTypeName = null;
           if (fieldArguments.length > 0) {
-            resultArr.push(buildArgumentsType(primitivesMap, field.name, typeName, fieldArguments));
+            let argType = (buildArgumentsType(primitivesMap, field.name, typeName, fieldArguments));
+            argTypeName = argType.name;
+            resultArr.push(argType);
           }
 
           if (!isPrimitive(primitivesMap, type)) {
             currentType.imports.push(type);
           }
 
-          return {
+          let retVal: Field = {
             name: field.name,
             type: type,
             isArray: isArray(field.type),
             isRequired: isRequired(field.type)
           };
+          if (argTypeName) {
+            retVal.argType = argTypeName;
+          }
+          return retVal;
         });
     }
     else if (type instanceof GraphQLUnionType) {
