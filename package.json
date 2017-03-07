@@ -1,6 +1,6 @@
 {
   "name": "gcg-tweaked",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Graphql-code-generator by Dotan Simha with some hacks from me to generate specific ts",
   "main": "dist/index.js",
   "scripts": {
