@@ -95,6 +95,9 @@ export const handleType = (schema: GraphQLSchema, primitivesMap: any, type: Grap
             let argType = (buildArgumentsType(primitivesMap, field.name, typeName, fieldArguments));
             argTypeName = argType.name;
             resultArr.push(argType);
+          } else if (typeName === 'Query' ||  typeName === 'Mutation' ||
+            typeName === 'query' ||  typeName === 'mutation') {
+            argTypeName = '';
           }
 
           if (!isPrimitive(primitivesMap, type)) {
@@ -108,7 +111,12 @@ export const handleType = (schema: GraphQLSchema, primitivesMap: any, type: Grap
             isRequired: isRequired(field.type)
           };
           if (argTypeName) {
-            retVal.argType = argTypeName;
+            if (argTypeName === '') {
+              retVal.argName = '_';
+            } else {
+              retVal.argType = argTypeName;
+              retVal.argName = retVal.name + 'Args';
+            }
           }
           return retVal;
         });

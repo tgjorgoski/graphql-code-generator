@@ -2,6 +2,7 @@ export interface Field {
   name: string;
   type?: string;
   argType?: string;
+  argName?: string;
   schemaFieldName?: string;
   isAliased?: boolean;
   isArray?: boolean;
