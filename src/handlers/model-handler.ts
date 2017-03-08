@@ -97,7 +97,7 @@ export const handleType = (schema: GraphQLSchema, primitivesMap: any, type: Grap
             resultArr.push(argType);
           } else if (typeName === 'Query' ||  typeName === 'Mutation' ||
             typeName === 'query' ||  typeName === 'mutation') {
-            argTypeName = '';
+            argTypeName = '_';
           }
 
           if (!isPrimitive(primitivesMap, type)) {
@@ -111,7 +111,7 @@ export const handleType = (schema: GraphQLSchema, primitivesMap: any, type: Grap
             isRequired: isRequired(field.type)
           };
           if (argTypeName) {
-            if (argTypeName === '') {
+            if (argTypeName === '_') {
               retVal.argName = '_';
             } else {
               retVal.argType = argTypeName;
