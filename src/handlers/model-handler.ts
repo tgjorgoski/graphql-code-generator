@@ -90,17 +90,9 @@ export const handleType = (schema: GraphQLSchema, primitivesMap: any, type: Grap
           const type = getTypeName(primitivesMap, field.type);
           const fieldArguments = field.args || [];
 
-          let argTypeName = null;
-          if (fieldArguments.length > 0) {
-            let argType = (buildArgumentsType(primitivesMap, field.name, typeName, fieldArguments));
-            argTypeName = argType.name;
-            resultArr.push(argType);
-          } else if (typeName === 'Query' ||  typeName === 'Mutation' ||
-            typeName === 'query' ||  typeName === 'mutation') {
-            argTypeName = '_';
-          }
 
-          if (!isPrimitive(primitivesMap, type)) {
+          let isPrim = isPrimitive(primitivesMap, type);
+          if (!isPrim) {
             currentType.imports.push(type);
           }
 
@@ -110,6 +102,17 @@ export const handleType = (schema: GraphQLSchema, primitivesMap: any, type: Grap
             isArray: isArray(field.type),
             isRequired: isRequired(field.type)
           };
+
+          let argTypeName = null;
+          if (fieldArguments.length > 0) {
+            let argType = (buildArgumentsType(primitivesMap, field.name, typeName, fieldArguments));
+            argTypeName = argType.name;
+            resultArr.push(argType);
+          } else if (typeName === 'Query' ||  typeName === 'Mutation' ||
+            typeName === 'query' ||  typeName === 'mutation' || (retVal.isArray && !isPrim)) {
+            argTypeName = '_';
+          }
+
           if (argTypeName) {
             if (argTypeName === '_') {
               retVal.argName = '_';
